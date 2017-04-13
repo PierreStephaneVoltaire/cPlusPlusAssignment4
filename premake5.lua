@@ -8,7 +8,7 @@ project "Assignment4"
    targetdir "bin/%{cfg.buildcfg}"
 
    files { "**.h", "**.cpp" }
-   buildoptions {"-std=c++11"}
+   buildoptions {"-std=c++11", "-g"}
 
 
    filter "configurations:Debug"
