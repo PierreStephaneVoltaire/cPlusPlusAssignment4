@@ -41,6 +41,11 @@ int main(int argc, char* argv[])
 {
     BinarySearchTree b;
     b=loadfile();
-    b.search("paul");
+	Person*  perARR=b.search("paul");
+	while (perARR) {
+		cout<<perARR->getlastName()<<endl;
+		perARR++;
+	}
+	system("PAUSE");
     return 0;
 }

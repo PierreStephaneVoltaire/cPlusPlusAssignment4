@@ -55,7 +55,8 @@ else{
             {
                 p[duplicate-1]=curr->data;
                 //check if the next left and right nodes are duplicate
-                if(curr->left!=NULL||curr->right!=NULL){break;}
+                if(curr->left==NULL||curr->right==NULL){break;}
+
                 else if(strcmp(curr->left->data.getlastName().c_str(),d.c_str())!=0&&strcmp(curr->right->data.getlastName().c_str(),d.c_str())!=0){break;}
                 else{
                     //copy array

@@ -1,0 +1,6 @@
+﻿cl : Command line warning D9002: ignoring unknown option '-std=c++11'
+cl : Command line warning D9002: ignoring unknown option '-g'
+  main.cpp
+c:\users\steph\source\repos\cplusplusassignment42\main.cpp(34): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Assignment4.vcxproj -> C:\Users\steph\Source\Repos\cPlusPlusAssignment42\bin\Debug\Assignment4.exe
+  Assignment4.vcxproj -> bin\Debug\Assignment4.pdb (Full PDB)
