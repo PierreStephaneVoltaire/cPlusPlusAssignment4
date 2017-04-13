@@ -4,6 +4,7 @@
 #include <cstring>
 #include <fstream>
 #include <regex>
+#include <vector>
 #include <cstdlib>
 #include <sstream>
 #include "Person.hpp"
@@ -16,7 +17,7 @@ BinarySearchTree  loadfile(){
     cout<<"file loaded"<<endl;
     if (myReadFile.is_open()) {
         string line;
-        regex words("[[:alpha:]]+-*[[:alpha:]]*");
+        regex words("[[:alpha:]]+");
         regex digits("\\d+");
         while (getline(myReadFile, line)) {
             Person p;
@@ -41,11 +42,14 @@ int main(int argc, char* argv[])
 {
     BinarySearchTree b;
     b=loadfile();
-	Person*  perARR=b.search("paul");
-	while (perARR) {
-		cout<<perARR->getlastName()<<endl;
-		perARR++;
-	}
+	/*vector<Person>  perARR=b.search("paul");
+	cout <<"\n" <<perARR.size();
+	for (int i = 0; i < perARR.size(); i++) {
+		cout << "\n" << perARR[i].getFirstName();
+		cout << "\n" << perARR[i].getlastName();
+		cout << "\n" << perARR[i].getPhoneNumber();
+	}*/
+
 	system("PAUSE");
     return 0;
 }

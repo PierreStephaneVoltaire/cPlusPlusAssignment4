@@ -39,3 +39,17 @@ bool operator> (const Person &p1, const Person &p2)
     }
     return bigger;
 }
+
+Person::Person()
+{
+	this->firstName = "";
+	this->lastName = "";
+	this->phoneNumber = 0;
+}
+
+Person::Person(string firstName, string lastName, int phoneNumber)
+{
+	this->firstName = firstName;
+	this->lastName = lastName;
+	this->phoneNumber = phoneNumber;
+}

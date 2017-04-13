@@ -9,6 +9,8 @@ private:
     std::string lastName;
     int phoneNumber;
 public:
+	Person();
+	Person(string firstName, string lastName, int phoneNumber);
     string getFirstName(){return firstName;}
     string getlastName(){return lastName;}
     int getPhoneNumber(){return phoneNumber;}
