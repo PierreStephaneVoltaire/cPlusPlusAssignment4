@@ -95,103 +95,103 @@ void BinarySearchTree::insert(Person d){
     if(isEmpty()) {root = t;
     cout<<"tree empty so adding root elem\n";
 }
-    else{
-        cout<<"this is the root"<<root->data.getFirstName()<<"\n";
-        cout<<"tree not empty\n";
-        tree_node* curr;
+else{
+    cout<<"this is the root"<<root->data.getFirstName()<<"\n";
+    cout<<"tree not empty\n";
+    tree_node* curr;
+    curr = root;
+    while(curr)
+    {
+        parent = curr;
+        if(t->data > curr->data) {curr = curr->right;
+        cout<<"going right\n";}
+        else {curr = curr->left;
+        cout<<"going left\n";}
+    }
+    if(t->data < parent->data){
+        parent->left = t;
+        cout<<"added left "<<parent->left->data.getlastName()<<"\n";}
+        else{
+            parent->right = t;
+            cout<<"added right "<<parent->right->data.getlastName()<<"\n";}
+        }
+    }
+    //search
+    Person* BinarySearchTree::search(string d)
+    {
+        if(isEmpty())
+        {
+            cout<<" This Tree is empty! "<<endl;
+            return 0;
+        }
+        Person *p=NULL;
+        int duplicate=1;
+        p=new Person[duplicate];
+        tree_node* curr=NULL;
+        tree_node* parent;
         curr = root;
-        while(curr)
+
+        while(curr != NULL)
+        {
+            if(strcmp(curr->data.getlastName().c_str(),d.c_str())==0)
+            {
+                p[duplicate-1]=curr->data;
+                if(strcmp(curr->left->data.getlastName().c_str(),d.c_str())!=0&&strcmp(curr->right->data.getlastName().c_str(),d.c_str())!=0){break;}
+                else{duplicate++;
+                Person* temp=new Person[duplicate];
+                copy(p,p+duplicate-1,temp);
+                delete[]p;
+                p=temp;
+            }
+        }
+        else
         {
             parent = curr;
-            if(t->data > curr->data) {curr = curr->right;
-        cout<<"going right\n";}
-            else {curr = curr->left;
-        cout<<"going left\n";}
+            if(strcmp(d.c_str(),curr->data.getlastName().c_str())>0) {curr = curr->right;}
+            else {curr = curr->left;}
         }
-        if(t->data < parent->data){
-            parent->left = t;
-        cout<<"added left "<<parent->left->data.getlastName()<<"\n";}
-            else{
-                parent->right = t;
-            cout<<"added right "<<parent->right->data.getlastName()<<"\n";}
-            }
-        }
-        //search
-        Person* BinarySearchTree::search(string d)
-        {
-            if(isEmpty())
-            {
-                cout<<" This Tree is empty! "<<endl;
-                return 0;
-            }
-            Person *p=NULL;
-            int duplicate=1;
-            p=new Person[duplicate];
-            tree_node* curr=NULL;
-            tree_node* parent;
-            curr = root;
-
-            while(curr != NULL)
-            {
-                if(strcmp(curr->data.getlastName().c_str(),d.c_str())==0)
-                {
-                    p[duplicate-1]=curr->data;
-                    if(strcmp(curr->left->data.getlastName().c_str(),d.c_str())!=0&&strcmp(curr->right->data.getlastName().c_str(),d.c_str())!=0){break;}
-                    else{duplicate++;
-                    Person* temp=new Person[duplicate];
-                    copy(p,p+duplicate-1,temp);
-                    delete[]p;
-                    p=temp;
-                }
-            }
-            else
-            {
-                parent = curr;
-                if(strcmp(d.c_str(),curr->data.getlastName().c_str())>0) {curr = curr->right;}
-                else {curr = curr->left;}
-            }
-        }
-        return p;
     }
- BinarySearchTree  loadfile(){
-     BinarySearchTree b;
-        ifstream myReadFile;
-        myReadFile.open("phonebook.txt");
-        cout<<"file loaded"<<endl;
-        if (myReadFile.is_open()) {
-            string line;
-            regex words("[[:alpha:]]+-*[[:alpha:]]*");
-            regex digits("\\d+");
+    return p;
+}
+BinarySearchTree  loadfile(){
+    BinarySearchTree b;
+    ifstream myReadFile;
+    myReadFile.open("phonebook.txt");
+    cout<<"file loaded"<<endl;
+    if (myReadFile.is_open()) {
+        string line;
+        regex words("[[:alpha:]]+-*[[:alpha:]]*");
+        regex digits("\\d+");
 
 
-            while (getline(myReadFile, line)) {
-                Person p;
-                smatch m;
-                regex_search(line, m, words);
-                p.setFirstName(m[0]);
-                line = m.suffix();
-                regex_search(line, m, words);
-                p.setLastName(m[0]);
-                line = m.suffix();
-                smatch numericResults;
-                regex_search(line, numericResults, digits);
-                const string numb = numericResults[0].str();
-                double phonenum = stoi(numb);
-                p.setPhoneNumber(phonenum);
-                b.insert(p);
-            }
-
+        while (getline(myReadFile, line)) {
+            Person p;
+            smatch m;
+            regex_search(line, m, words);
+            p.setFirstName(m[0]);
+            line = m.suffix();
+            regex_search(line, m, words);
+            p.setLastName(m[0]);
+            line = m.suffix();
+            smatch numericResults;
+            regex_search(line, numericResults, digits);
+            const string numb = numericResults[0].str();
+            double phonenum = stoi(numb);
+            p.setPhoneNumber(phonenum);
+            b.insert(p);
         }
-return b;
+
     }
-    int main(int argc, char* argv[])
-    {
- BinarySearchTree b;
- b=loadfile();
- b.search("paul");
+    return b;
+}
+int main(int argc, char* argv[])
+{
+    BinarySearchTree b;
+    b=loadfile();
+    b.search("paul");
 
 
 
 
-        return 0;
-    }
+    return 0;
+}
